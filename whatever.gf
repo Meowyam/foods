@@ -1,7 +1,10 @@
-abstract demo = {
+abstract whatever = {
+    flags startcat = Statement;
     cat
         Statement;
         Item;
     fun
-        Like: Item -> Statement;
+        IceCream: Item;
+        ILike: Item -> Statement;
+        YouLike: Item -> Statement;
 }
