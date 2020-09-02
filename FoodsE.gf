@@ -1,30 +1,28 @@
-concrete FoodsE of Foods = {
+concrete FoodsE of Foods = open Prelude in {
     lincat
-        Comment = {s : Str}; 
+        Comment = SS; 
         Item = LinItem; --{s : Str; n : Number}; 
         Kind = LinKind; --  {s : Str}; 
         Quality =  LinQuality; 
     lin
         -- : Item -> Quality -> Comment; 
-        Pred item quality = {
-            s = item.s ++ copula ! item.n ++ quality.s
-            };
+        Pred item quality =
+            ss (item.s ++ copula ! item.n ++ quality.s);
         -- : Kind -> Item
-        This k = det "this" Sg k; 
-        That k = det "that" Sg k; -- { s = "that" ++ k.s ! Sg; n = Sg};
-        These k = det "these" Pl k; -- { s = "these" ++ k.s ! Pl; n = Pl};
-        Those k = det "those" Pl k; -- { s = "those" ++ k.s ! Pl; n = Pl};
-        --: Mod: Quality -> Kind -> Kind; 
+        This = det Sg "this"; 
+        That = det Sg "that"; -- { s = "that" ++ k.s ! Sg; n = Sg};
+        These = det Pl "these"; -- { s = "these" ++ k.s ! Pl; n = Pl};
+        Those = det Pl "those"; -- { s = "those" ++ k.s ! Pl; n = Pl};
+        --: Mod: Quality -> Kind; 
         Mod q k = {
-            s = table {
-                num => q.s ++ k.s ! num}
-            };
-           
-            --{s =  q.s ++ k.s };
+            s = table {num => k.s ! num ++ q.s}
+        };
+        --{s =  q.s ++ k.s };
         Pizza = mkKind "pizza";
-        Cheese = mkKind "cheese";
         Wine = mkKind "wine";
+        Cheese = mkKind "cheese";
         Fish = mkKind "fish";
+        Salad = mkKind "salad";
         Fresh = mkQuality "fresh";
         Warm = mkQuality "warm";
         Italian = mkQuality "Italian";
@@ -40,18 +38,20 @@ concrete FoodsE of Foods = {
             Pl => "are"
             };
         LinItem : Type = {s :Str; n : Number};
-        det     :  Str -> Number -> LinKind -> LinItem;
-        det this sg kind = {
-            s = this ++ kind.s !sg ; n = sg
+        det     :  Number -> Str -> LinKind -> LinItem =
+        \n,d,kind -> {
+            s = d ++ kind.s ! n ;
+            n = n;
         };
         LinKind : Type = { s: Number => Str};
         mkKind : Str-> LinKind ;
         mkKind str = {
             s = table {
                 Sg => str;
-                Pl => str +"s"}
-                } ;
-        LinQuality : Type = {s : Str};
+                Pl => str +"s"
+            }
+        } ;
+        LinQuality : Type = {s : Str} ;
         mkQuality : Str -> LinQuality;
         mkQuality str = {s = str};
 }
