@@ -19,17 +19,18 @@ concrete FoodsF of Foods = open Prelude in {
               g = k.g
             } ; 
             --{s =  q.s ++ k.s };
-        Pizza = mkKind "pizza" Fem;
-        Cheese = mkKind "fromage" Masc;
-        Wine = mkKind "vin" Masc;
-        Fish = mkKind "poisson" Masc;
-        Salad = mkKind "salade" Fem;
-        Fresh = mkQuality "frais";
-        Warm = mkQuality "chaud";
-        Italian = mkQuality "Italien";
-        Expensive = mkQuality "cher"; 
-        Boring = mkQuality "ennuyeux";
-        Delicious = mkQuality "delicieux";
+        Pizza = regKind "pizza" Fem;
+        Cheese = regKind "fromage" Masc;
+        Wine = regKind "vin" Masc;
+        Fish = regKind "poisson" Masc;
+        Salad = regKind "salade" Fem;
+        Cake = regKind "gâteau" Masc;
+        Fresh = regQuality "frais";
+        Warm = regQuality "chaud";
+        Italian = regQuality "Italien";
+        Expensive = regQuality "cher"; 
+        Boring = regQuality "ennuyeux";
+        Delicious = regQuality "delicieux";
     param
         Number = Sg | Pl ;
         Gender = Fem | Masc ;
@@ -47,26 +48,48 @@ concrete FoodsF of Foods = open Prelude in {
             n = n
         };
         LinKind : Type = { s: Number => Str; g : Gender };
-        mkKind : Str-> Gender -> LinKind;
-        mkKind str g = {
+        mkKind : Str-> Str -> Gender -> LinKind;
+        mkKind x y g = {
             s = table {
-                Sg => str;
-                Pl => str +"s"
+                Sg => x;
+                Pl => y
             };
             g = g
         } ;
+        regKind : Str -> Gender -> LinKind = \w ->
+        let
+            ws : Str = case w of {
+                _ + ("eau") => w + "x";
+                _           => w + "s"
+            }
+        in
+        mkKind w ws;
+
         LinQuality : Type = {s : Gender => Number => Str};
-        mkQuality : Str -> LinQuality;
-        mkQuality str = {
+        mkQuality : Str -> Str -> LinQuality;
+        mkQuality x y = {
             s = table {
                 Masc => table {
-                    Sg => str;
-                    Pl => str + "s"
+                    Sg => x;
+                    Pl => case last x of{
+                        "x" => x;
+                        _   => x + "s"
+                    } 
                 } ;
                 Fem => table {
-                    Sg => str + "e";
-                    Pl => str + "es"
+                    Sg => y;
+                    Pl => y + "s"
                 }
             }
         };
+        regQuality: Str -> LinQuality = \w ->
+        let
+            ws : Str = case w of {
+                _ + ("eux") => init w + "se";
+                _ + ("ais") => init w + "che";
+                _ + ("en")  => w + "ne";
+                _           => w + "e"
+            }
+        in
+        mkQuality w ws;
 }

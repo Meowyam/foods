@@ -23,6 +23,7 @@ concrete FoodsE of Foods = open Prelude in {
         Cheese = mkKind "cheese";
         Fish = mkKind "fish";
         Salad = mkKind "salad";
+        Cake = mkKind "cake";
         Fresh = mkQuality "fresh";
         Warm = mkQuality "warm";
         Italian = mkQuality "Italian";

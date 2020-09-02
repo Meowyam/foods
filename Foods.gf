@@ -9,6 +9,6 @@ abstract Foods = {
     Pred : Item -> Quality -> Comment ;
     This, That, These, Those : Kind -> Item ;
     Mod : Quality -> Kind -> Kind ;
-    Cheese, Fish, Pizza, Wine, Salad : Kind ;
+    Cheese, Fish, Pizza, Wine, Salad, Cake : Kind ;
     Fresh, Warm, Italian, Expensive, Delicious, Boring : Quality ;
 }
