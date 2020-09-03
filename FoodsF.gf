@@ -20,6 +20,10 @@ concrete FoodsF of Foods = open Prelude in {
               g = k.g
             } ; 
             --{s =  q.s ++ k.s };
+        --: Very: Quality -> Quality;
+        Very q = {
+            s = \\g,num => "tres" ++ q.s !  g ! num;
+        };
         Pizza = regKind "pizza" Fem;
         Cheese = regKind "fromage" Masc;
         Wine = regKind "vin" Masc;

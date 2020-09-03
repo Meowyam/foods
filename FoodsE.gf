@@ -18,6 +18,10 @@ concrete FoodsE of Foods = open Prelude in {
             s = table {num => k.s ! num ++ q.s}
         };
         --{s =  q.s ++ k.s };
+        --: Very: Quality -> Quality;
+        Very q = {
+            s = "very" ++ q.s;
+        };
         Pizza = regKind "pizza";
         Wine = regKind "wine";
         Cheese = regKind "cheese";
