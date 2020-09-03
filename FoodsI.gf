@@ -2,14 +2,14 @@
     --the functor opens interfaces
     
     --functor instantiation
-incomplete concrete FoodsI of Foodsres = open Syntax, LexFoods in {
+incomplete concrete FoodsI of Foodsres = open Syntax, LexFoods, Prelude in {
     lincat
         Comment = Cl ;
         Item = NP ;
         Kind = CN ;
         Quality = AP ;
         Person = NP ;
-        Act = V2;
+        Act = V2 ;
     lin
         Pred item quality = mkCl item quality ;
         This kind = mkNP this_Det kind ;
@@ -18,7 +18,7 @@ incomplete concrete FoodsI of Foodsres = open Syntax, LexFoods in {
         Those kind = mkNP those_Det kind ;
         Mod quality kind = mkCN quality kind ;
         Very quality = mkAP very_AdA quality ;
-        EatsFood person act item = mkCl person Eat (mkNP item);
+        EatsFood person act kind = mkCl person (mkVP act (mkNP kind));
   
         Wine = mkCN wine_N ;
         Pizza = mkCN pizza_N ;
@@ -35,6 +35,5 @@ incomplete concrete FoodsI of Foodsres = open Syntax, LexFoods in {
         She = she_NP;
         He = he_NP;
         They = they_NP;
-        Eat = mkVP eat_V;
-    
+        Eat = eat_V;
     }

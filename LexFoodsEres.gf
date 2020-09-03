@@ -14,5 +14,5 @@ instance LexFoodsEres of LexFoods = open SyntaxEng, ParadigmsEng in {
         boring_A = mkA "boring";
         delicious_A = mkA "delicious";
 
-        eat_V = mkV "eat";
+        eat_V = mkV2 "eat";
 }

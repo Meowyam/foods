@@ -12,5 +12,5 @@ instance LexFoodsFres of LexFoods = open SyntaxFre, ParadigmsFre in {
         expensive_A = mkA "cher"; 
         boring_A = mkA "ennuyeux";
         delicious_A = mkA "delicieux";
-        eat_V = mkV "manger";
+        eat_V = mkV2 "manger";
 }

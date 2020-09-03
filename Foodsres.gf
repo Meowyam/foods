@@ -14,5 +14,5 @@ abstract Foodsres = {
     Fresh, Warm, Italian, Expensive, Delicious, Boring : Quality ;
     She, He, They : Person ;
     Eat : Act ;
-    EatsFood : Act -> Person -> Item -> Comment;
+    EatsFood : Person -> Act -> Kind -> Comment;
 }
