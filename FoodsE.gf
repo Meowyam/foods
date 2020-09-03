@@ -18,12 +18,12 @@ concrete FoodsE of Foods = open Prelude in {
             s = table {num => k.s ! num ++ q.s}
         };
         --{s =  q.s ++ k.s };
-        Pizza = mkKind "pizza";
-        Wine = mkKind "wine";
-        Cheese = mkKind "cheese";
-        Fish = mkKind "fish";
-        Salad = mkKind "salad";
-        Cake = mkKind "cake";
+        Pizza = regKind "pizza";
+        Wine = regKind "wine";
+        Cheese = regKind "cheese";
+        Fish = regKind "fish";
+        Salad = regKind "salad";
+        Cake = regKind "cake";
         Fresh = mkQuality "fresh";
         Warm = mkQuality "warm";
         Italian = mkQuality "Italian";
@@ -45,13 +45,21 @@ concrete FoodsE of Foods = open Prelude in {
             n = n;
         };
         LinKind : Type = { s: Number => Str};
-        mkKind : Str-> LinKind ;
-        mkKind str = {
+        mkKind : Str -> Str -> LinKind ;
+        mkKind x y = {
             s = table {
-                Sg => str;
-                Pl => str +"s"
+                Sg => x;
+                Pl => y
             }
         } ;
+        regKind : Str -> LinKind = \w ->
+        let
+            ws : Str = case w of {
+                "fish" => w;
+                _      => w + "s"
+            }
+        in
+        mkKind w ws;
         LinQuality : Type = {s : Str} ;
         mkQuality : Str -> LinQuality;
         mkQuality str = {s = str};

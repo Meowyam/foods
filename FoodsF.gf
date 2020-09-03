@@ -9,6 +9,7 @@ concrete FoodsF of Foods = open Prelude in {
         Pred item quality =
             ss (item.s ++ copula ! item.n ++ quality.s ! item.g ! item.n);
         -- : Kind -> Item
+        -- mkNP "this cheese"
         This = det Sg "ce" "cette"; 
         That = det Sg "ce" "cette"; -- { s = "that" ++ k.s ! Sg; n = Sg};
         These = det Pl "ceux-ci" "celles-ci"; -- { s = "these" ++ k.s ! Pl; n = Pl};
