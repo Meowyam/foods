@@ -18,11 +18,16 @@ fun
 
   light, fan : Kind ;
 
+--appliance : Kind ;  
+
   switchOn : (k : Kind) -> Switchable k -> Action k ;
 
   dim : (k : Kind) -> Dimmable k -> Action k ;
 
 -- proof objects
+
+--fan : Switchable appliance ;
+--light : Dimmable appliance ;
 
   switchable_fan : Switchable fan ;
   dimmable_light : Dimmable light ;
