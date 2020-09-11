@@ -1,3 +1,5 @@
+--# -path=.:../foods:alltenses
+
 concrete FoodsEres of Foodsres = FoodsI with 
-    (Syntax = SyntaxEng),
-    (LexFoods = LexFoodsEres)
+  (Syntax = SyntaxEng),
+  (LexFoods = LexFoodsEres) ;
