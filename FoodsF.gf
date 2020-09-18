@@ -36,6 +36,7 @@ concrete FoodsF of Foods = open Prelude in {
         Expensive = regQuality "cher"; 
         Boring = regQuality "ennuyeux";
         Delicious = regQuality "delicieux";
+        Good = regQuality "bon";
     param
         Number = Sg | Pl ;
         Gender = Fem | Masc ;
@@ -87,12 +88,14 @@ concrete FoodsF of Foods = open Prelude in {
                 }
             }
         };
+        consonant : pattern Str = #("et"|"on");
         regQuality: Str -> LinQuality = \w ->
         let
             ws : Str = case w of {
-                _ + ("eux") => init w + "se";
+                x + "eux" => x + "euse";
                 _ + ("ais") => init w + "che";
                 _ + ("en")  => w + "ne";
+                bon + c@#consonant => bon + c + c + "e";
                 _           => w + "e"
             }
         in

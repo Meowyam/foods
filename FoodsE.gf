@@ -34,6 +34,7 @@ concrete FoodsE of Foods = open Prelude in {
         Expensive = mkQuality "expensive"; 
         Boring = mkQuality "boring";
         Delicious = mkQuality "delicious";
+        Good = mkQuality "good";
     param
         Number = Sg | Pl ;
     oper
