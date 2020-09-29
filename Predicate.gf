@@ -8,12 +8,10 @@ abstract Predicate = {
     cat
       Proposition;
       Individual;
-      Quantifier;
-      Domain;
-      Validation; -- validates the proposition to make the statement true or false
+      --Quantifier;
+      --Domain;
+      --Validation; -- validates the proposition to make the statement true or false
       -- these are example statements
-      P; -- Today is Friday
-      Q; -- It is raining today
 
     fun
       -- Variable -> Predicate -> Statement;
@@ -22,16 +20,14 @@ abstract Predicate = {
       -- Proposition with a true/false value
 
       -- P         proposition
-      Statement : Proposition -> Validation;
-
       -- Domain    ->  Quantifier ->   Proposition;
       -- In a domain, individual, all/some, proposition
 
       -- Universal quantification
-      Forall : Domain -> (Individual -> Proposition) -> Proposition ;
+      Forall : (Individual -> Proposition) -> Proposition ;
 
       -- Existential quantification
-      Exists : Domain -> (Individual -> Proposition) -> Proposition ;
+      Exists : (Individual -> Proposition) -> Proposition ;
       
       -- logical connectives
       -- https://www.geeksforgeeks.org/proposition-logic/?ref=lbp
@@ -43,4 +39,7 @@ abstract Predicate = {
       Or : (P, Q: Proposition) -> Proposition ;
       -- implies: if p then q, p -> q
       Implies : (P, Q: Proposition) -> Proposition;
+
+      P : Proposition;
+      Q : Proposition;
 }
