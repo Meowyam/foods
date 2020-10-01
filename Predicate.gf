@@ -40,6 +40,7 @@ abstract Predicate = {
       -- implies: if p then q, p -> q
       Implies : (P, Q: Proposition) -> Proposition;
 
-      P : Proposition;
-      Q : Proposition;
+      P, Q: Individual -> Proposition;
+
+      Bob, Cats: Individual;
 }
