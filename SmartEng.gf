@@ -11,12 +11,13 @@ lincat
 lin
   CAction _ act dev = ss (act.s ++ act.part ++ dev.s) ;
 
-  DKindOne  k = { s = "the" ++ k.s };
+  DKindOne k = { s = "the" ++ k.s };
 
   fan = mkNoun "fan" ;
   light = mkNoun "light" ;
 
   switchOn _ _ = mkVerb "switch" "on" ;
+  switchOff _ _ = mkVerb "switch" "off";
 
   dim _ _ = mkVerb "dim" [] ;
 

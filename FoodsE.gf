@@ -1,21 +1,22 @@
-concrete FoodsE of Foods = open Prelude in {
+concrete FoodsE of Foods = {
     lincat
-        Comment = SS; 
+        Comment = {s: Str}; 
         Item = LinItem; --{s : Str; n : Number}; 
         Kind = LinKind; --  {s : Str}; 
         Quality =  LinQuality; 
     lin
         -- : Item -> Quality -> Comment; 
-        Pred item quality =
-            ss (item.s ++ copula ! item.n ++ quality.s);
-        -- : Kind -> Item
-        This = det Sg "this"; 
-        That = det Sg "that"; -- { s = "that" ++ k.s ! Sg; n = Sg};
-        These = det Pl "these"; -- { s = "these" ++ k.s ! Pl; n = Pl};
-        Those = det Pl "those"; -- { s = "those" ++ k.s ! Pl; n = Pl};
+        Pred item quality = {
+            s = item.s ++ copula ! item.n ++ quality.s
+        };
+       -- : Kind -> Item
+        This = det "this" Sg k ;
+        That = det "that" Sg k ; -- { s = "that" ++ k.s ! Sg; n = Sg};
+        These = det "these" Pl k ; -- { s = "these" ++ k.s ! Pl; n = Pl};
+        Those = det "those" Pl k ; -- { s = "those" ++ k.s ! Pl; n = Pl};
         --: Mod: Quality -> Kind; 
         Mod q k = {
-            s = table {num => k.s ! num ++ q.s}
+            s = table {num => q.s ++ k.s ! num }
         };
         --{s =  q.s ++ k.s };
         --: Very: Quality -> Quality;

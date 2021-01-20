@@ -1,4 +1,4 @@
-instance LexFoodsFres of LexFoods = open SyntaxFre, ParadigmsFre in {
+instance LexFoodsFres of LexFoods = open SyntaxFre, ParadigmsFre, LexiconFre in {
   oper
     pizza_N = mkN "pizza" feminine;
     cheese_N = mkN "fromage" masculine;
@@ -14,5 +14,6 @@ instance LexFoodsFres of LexFoods = open SyntaxFre, ParadigmsFre in {
     boring_A = mkA "ennuyeux" "ennuyeuse";
     delicious_A = mkA "delicieux" "delicieuse";
    
-     eat_V = mkV2 "manger";
+    eat_V = mkV2 "manger";
+    drink_V = mkV2 "boire";
 }

@@ -2,7 +2,7 @@ concrete FoodsF of Foods = open Prelude in {
     lincat
         Comment = SS; 
         Item = LinItem; --{s : Str; n : Number; g: Gender}; 
-        Kind = LinKind; --  {s : Str}; 
+        Kind = LinKind; --  {s : Str }; 
         Quality =  LinQuality; 
     lin
         -- : Item -> Quality -> Comment; 

@@ -19,8 +19,13 @@ concrete FoodsKlingon of Foods = {
     -- : Quality -> Kind -> Kind ;
     Mod q k = {
       s = table {
-        num => q.s ++ k.s ! num}
+        num => q.s ++ k.s ! num }
     } ; 
+
+    Very q = {
+       s = "'el" ++ q.s;
+    };
+
 
     Pizza = mkKind "pltSa' chab" ;
     Cheese = mkKind "nlm wlb ngogh" ;
@@ -46,11 +51,12 @@ concrete FoodsKlingon of Foods = {
 
     LinItem : Type = {s : Str; n : Number};
     -- determiner
-    det : Str -> Number -> LinKind -> LinItem;
-    det this sg kind = {
-      s = this ++ kind.s !sg ; n = sg
-    } ;
-    
+
+    det     :  Number -> Str -> LinKind -> LinItem =
+    \n,d,kind -> {
+        s = d ++ kind.s ! n ;
+        n = n;
+    };
     LinKind : Type = {s : Number => Str};
     mkKind : Str -> LinKind ;
     mkKind str = {
