@@ -18,14 +18,14 @@ concrete CalculatorC of Calculator = open Formal, Prelude in {
         addParen :  Str -> Str = \s -> 
             "(" ++ s ++ ")";
 
-     -- Prec : PType = Ints 2 ;
-     -- TermPrec : Type = {s : Str ; p : Prec} ;
+        Prec : PType = Predef.Ints 2 ;
+        TermPrec : Type = {s : Str ; p : Prec} ;
      -- mkPrec : Prec -> Str -> TermPrec = \p,s -> {s = s ; p = p} ;
-     -- usePrec : TermPrec -> Prec -> Str = \x,p ->
-     --   case lessPrec x.p p of {
-     --     True  => "(" ++ x.s ++ ")" ;
-     --     False => x.s
-     --   } ;
+        usePrec : TermPrec -> Prec -> Str = \x,p ->
+          case lessPrec x.p p of {
+            True  => "(" ++ x.s ++ ")" ;
+            False => x.s
+          } ;
      -- constant : Str -> TermPrec = mkPrec 2 ;
 
       --infixl : Prec -> Str -> (_,_ : TermPrec) -> TermPrec = \p,f,x,y ->
