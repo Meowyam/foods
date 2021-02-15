@@ -1,0 +1,19 @@
+resolver: lts-12.26
+
+packages:
+- .
+
+# so that `stack build --copy-bins` puts bin here
+local-bin-path: .
+
+extra-deps:
+# - github: GrammaticalFramework/gf-core
+#   commit: d06539c # release 3.10
+- gf-3.10
+- cgi-3001.3.0.3 # dependency of gf
+- parsec-numbers-0.1.0@sha256:60fa05b1c16050dffd0e28cecb682a021eeec1be6f34dc9d901a38c90182f289,727
+
+flags:
+     # this excludes PGF2 module in gf package
+  gf:
+    c-runtime: false
