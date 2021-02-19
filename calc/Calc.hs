@@ -1,14 +1,21 @@
 import PGF
 import Calculator
-import Text.Parsec
-import Text.ParserCombinators.Parsec.Number(int)
+import Count
 
 main :: IO ()
 main = do
   gr <- readPGF "Calculator.pgf"
-  interact (translate gr)
+  loop (translate getExp gr)
 
-translate :: PGF -> String -> String
-translate gr s = case parseAllLang gr (startCat gr) s of
-   (lg,t:_):_ -> unlines [linearize gr l t]
-   _ -> "NO PARSE"
+loop :: (String -> String) -> IO ()
+loop trans = do
+  s <- getLine
+  if s == "quit" then putStrLn "bye" else do
+    putStrLn $ trans s
+
+translate :: (Tree -> Tree) -> PGF -> String -> String
+translate tr gr s =
+  case parseAllLang gr (startCat gr) s of
+    (lg,t:_):_ -> linearize gr lg (tr t)
+    _ -> "NO PARSE"
+
