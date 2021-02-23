@@ -9,7 +9,8 @@ executable Calc
     .
   main-is: Calc.hs
   other-modules:
-    Calculator
+    Calculator,
+    Count
   build-depends:
     base,
     parsec,
