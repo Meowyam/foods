@@ -12,6 +12,7 @@ loop trans = do
   s <- getLine
   if s == "quit" then putStrLn "bye" else do
     putStrLn $ trans s
+    loop trans
 
 translate :: (Tree -> Tree) -> PGF -> String -> String
 translate tr gr s =
